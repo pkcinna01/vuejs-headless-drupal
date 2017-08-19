@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Device Tracker</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <msg-panel ref="msgPanel"></msg-panel>
+        <login-modal ref="loginModal"></login-modal>
+        <header-view :user="user"></header-view>
+        <div id="router-view-wrapper" class="container">
+            <router-view></router-view>
+        </div>
+        <footer-view :user="user" :route="$router.currentRoute" ref="footer"></footer-view>
+    </div>
+    
+    <template id="home-template">
+            <view-header :title='"HOME"'></view-header>
+    </template>
+
+    <template id="about-template">
+            <view-header :title='"ABOUT"'></view-header>
+        </template>
+
+    <template id="contact-template">
+            <view-header :title='"CONTACT"'></view-header>
+    </template>
+
+    <template id="help-template">
+        <view-header :title='"HELP"'>
+            <div class="div-table">
+                <div>
+                    <div style="font-style:italic;color:gray;vertical-align:bottom;">
+                        well... not really.
+                    </div>
+                </div>
+            </div>
+        </view-header>
+    </template>
+
+    <template id="error-template">
+    <div>
+        <div class="alert alert-danger">
+            <span class="error-header">{{ type.replace(/-/g,' ') }}</span>
+            <span class="text-danger" style="padding-left:25px;">Path: {{ $route.query.to }}</span>
+        </div>
+        <div class='container'>
+            <div class="text-danger">{{ $route.query.details }}</div>
+        </div>
+    </div>
+    </template>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.4/vue-resource.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/vue-router/2.7.0/vue-router.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/vee-validate/2.0.0-beta.25/vee-validate.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/device-tracker/header.js"></script>
+    <script type="text/javascript" src="js/device-tracker/footer.js"></script>
+    <script type="text/javascript" src="js/device-tracker/msg-panel.js"></script>
+    <script type="text/javascript" src="js/device-tracker/drupal-resource.js"></script>
+    <script type="text/javascript" src="js/device-tracker/drupal-session.js"></script>
+    <script type="text/javascript" src="js/device-tracker/item-list.js"></script>
+    <script type="text/javascript" src="js/device-tracker/user-list.js"></script>
+    <script type="text/javascript" src="js/device-tracker/device-list.js"></script>
+    <script type="text/javascript" src="js/device-tracker/user-details.js"></script>
+    <script type="text/javascript" src="js/device-tracker/login-btn-panel.js"></script>
+    <script type="text/javascript" src="js/device-tracker/login-modal.js"></script>
+    <script type="text/javascript" src="js/device-tracker/router.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>
